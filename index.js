@@ -12,8 +12,8 @@ const upload = multer();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// "https://stirring-meerkat-f88db6.netlify.app"
-const corsUrl = "http://localhost:3000" 
+// const corsUrl = "http://localhost:3000" 
+const corsUrl = "https://stirring-meerkat-f88db6.netlify.app" 
 app.use(cors(
     {
         origin : [corsUrl],
