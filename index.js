@@ -13,8 +13,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // const corsUrl = "http://localhost:3000" 
-// const corsUrl = "https://keen-tapioca-848e6d.netlify.app"; 
-const corsUrl = "*.netlify.app";
+const corsUrl = "https://keen-tapioca-848e6d.netlify.app"; 
+// const corsUrl = "*.netlify.app";
 app.use(cors(
     {
         origin : [corsUrl],
@@ -27,13 +27,21 @@ mongoose.connect(process.env.DATABASE_URL).then(() => console.log('Connected to 
     .catch(error => console.error('Error connecting to MongoDB:', error));
 
     
-app.get('/', async (req, res) => {
-    console.log("GET")
-    res.json({message : "Hello, world! Its dummy get method!"});
 
-});
-
-
+    app.get('/', async (req, res) => {
+        try {
+            // Fetch the first player from the database
+            const firstPlayer = await Player.findOne().select('name').lean().exec();
+            if (!firstPlayer) {
+                return res.status(404).json({ message: "No players found in the database" });
+            }
+            // Send the name of the first player as the response
+            res.json({ message: `Hello, world! The first player in the database is ${firstPlayer.name}` });
+        } catch (error) {
+            console.error("Error fetching first player:", error);
+            res.status(500).json({ message: "Internal server error" });
+        }
+    });
 app.post('/upload', upload.single('csvFile'), async (req, res) => {
     const results = [];
 
