@@ -23,7 +23,7 @@ app.use(cors(
 ));
 
 // Connect to MongoDB
-mongoose.connect(process.env.DATABASE_URL).then(() => console.log('Connected to MongoDB'))
+mongoose.connect("mongodb+srv://hassaanistic:Hassaan7@playerteamcluster.73bwef1.mongodb.net/playersData").then(() => console.log('Connected to MongoDB'))
     .catch(error => console.error('Error connecting to MongoDB:', error));
 
     
