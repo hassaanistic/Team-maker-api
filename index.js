@@ -31,7 +31,7 @@ mongoose.connect(process.env.MONGODB_URI).then(() => console.log('Connected to M
     app.get('/', async (req, res) => {
         try {
             // Fetch the first player from the database
-            const firstPlayer = await Person.findOne().select('name').lean().exec();
+            const firstPlayer = await Person.findOne({ name: '1' }).select('name').lean().exec();
             if (!firstPlayer) {
                 return res.status(404).json({ message: "No players found in the database" });
             }
