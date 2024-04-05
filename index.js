@@ -14,10 +14,11 @@ app.use(express.urlencoded({ extended: true }));
 
 // const corsUrl = "http://localhost:3000" 
 // const corsUrl = "https://keen-tapioca-848e6d.netlify.app"; 
-const corsUrl = "*";
+const corsUrl = "*.netlify.app";
 app.use(cors(
     {
         origin : [corsUrl],
+        credentials: true
         }
 ));
 
