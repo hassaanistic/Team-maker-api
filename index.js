@@ -16,7 +16,10 @@ app.use(express.urlencoded({ extended: true }));
 const corsUrl = "https://keen-tapioca-848e6d.netlify.app" 
 app.use(cors(
     {
-        origin : [corsUrl]
+        origin : [corsUrl],
+        optionsSuccessStatus: 200,
+        credentials: true,
+        methods: ['GET', 'PUT', 'POST', 'DELETE'],
         }
 ));
 
