@@ -18,9 +18,6 @@ const corsUrl = "*";
 app.use(cors(
     {
         origin : [corsUrl],
-        methods: ['GET', 'PUT', 'POST', 'DELETE'],
-        credentials: true,
-        optionsSuccessStatus: 200,
         }
 ));
 
