@@ -16,9 +16,8 @@ app.use(express.urlencoded({ extended: true }));
 const corsUrl = "https://keen-tapioca-848e6d.netlify.app" 
 app.use(cors(
     {
-        origin : [corsUrl],
-        credentials : true
-    }
+        origin : [corsUrl]
+        }
 ));
 
 // Connect to MongoDB
