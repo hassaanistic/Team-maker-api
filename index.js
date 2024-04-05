@@ -13,13 +13,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // const corsUrl = "http://localhost:3000" 
-const corsUrl = "https://keen-tapioca-848e6d.netlify.app" 
+// const corsUrl = "https://keen-tapioca-848e6d.netlify.app"; 
+const corsUrl = "*";
 app.use(cors(
     {
         origin : [corsUrl],
-        optionsSuccessStatus: 200,
-        credentials: true,
         methods: ['GET', 'PUT', 'POST', 'DELETE'],
+        credentials: true,
+        optionsSuccessStatus: 200,
         }
 ));
 
